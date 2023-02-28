@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <div id="first"></div>
+    <div id="second"></div>
+  </div>
+  <script>
+    const root = document.getElementById('root');
+
+    root.style.width = '500px';
+    root.style.height = '500px';
+    root.style.border = '1px solid black';
+
+    const first = document.getElementById('first');
+    first.style.width = '200px';
+    first.style.height = '200px';
+    first.style.border = '1px solid red';
+
+    const second = document.getElementById('second');
+    second.style.width = '200px';
+    second.style.height = '200px';
+    second.style.border = '1px solid green';
+
+    // 반복문의 필요성 느끼기
+
+    /*
+      변수 root, first, second 세 개는 모두 DOM이다.
+      '공통된 부분'과 '구분되는 부분'을 '패턴 분석'이라고 분른다.
+
+      공통된 부분이라면 -> 반복문이나, 함수를 사용해서 '중복'을 줄이고, '재사용성'을 높일 수 있다.
+      차이점은 변수나 매개변수를 사용해서 중복을 줄일 수 있다.
+
+      현재의 코드는 HTML마크업으로 작성하는 것 보다 비효율 적이지만, 대량의 작업일 수록 본 예제가 가지고 있는 재사용성은 압도적으로 높다.
+    */
+
+    // 사용자 정의 함수 makeElement()
+    function makeElement(tagName,textNode) {
+      let element = document.createElement(tagName);
+      element.innerText = textNode;
+      element.style.width = '100px';
+      element.style.height = '100px';
+      element.style.backgroundColor = 'salmon';
+      return element;
+    }
+    // HTML을 만들고, 스타일링까지 완료한 뒤 데이터를 return(반환)했다.
+
+    first.appendChild(makeElement('section','hello!'));
+    // 첫 번재 정적 요소(first)에 자식 요소로 '호출'하면서 추가한 모습이다.
+
+  </script>
+</body>
+</html>
