@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #main {
+      width: 100px;
+      height: 100px;
+      background-color: violet;
+    }
+  </style>
+</head>
+<body>
+  <div id="parent"></div>
+  <script>
+    const root = document.getElementById("root");
+
+    // function ulMaker () {
+    //   const ulElement = document.createElement('ul'); // .이 찍혔네? 메서드네?
+    //   ulElement.setAttribute('id','menu');
+    //   root.appendChild(ulElement);
+    // }
+    // ulMaker();
+
+    // 리터럴을 걷어보자
+    // function ulMaker (tagName, setAttriName, setAttrivalue, parent) {
+    //   const element = document.createElement(tagName); // .이 찍혔네? 메서드네?
+    //   element.setAttribute(setAttriName,setAttrivalue);
+    //   parent.appendChild(element);
+    // }
+    // for (let i=0; i<100; i++) {
+    //   ulMaker("div","id",`test-${i}`, root);
+    // }
+
+    // const pick = document.querySelector("#root > div:nth-child(51)");
+    // pick.style.width = '100px'
+    // pick.style.height = '100px'
+    // pick.style.backgroundColor = 'red'
+    // console.dir(pick)
+
+    // 메서드를 만들어 볼까?
+    const ElementMaker = {
+      tagName : "",
+      setAttriName : "",
+      setAttrivalue : "",
+      parent : "",
+      Maker : function (tagName, setAttri, setAttriValue, parent) {
+        const element = document.createElement(tagName);
+        element.setAttribute(setAttri, setAttriValue);
+        parent.appendChild(element);
+      },
+      loopFunc : function (setint,howMuch) {
+        for(let i = setint; i < howMuch; i++) {
+          this.maker();
+        }
+      }
+    }
+  </script>
+</body>
+</html>
